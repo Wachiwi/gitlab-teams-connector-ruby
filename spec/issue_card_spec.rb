@@ -1,10 +1,10 @@
 require 'spec_helper'
-require_relative '../lib/merge_card'
+require_relative '../lib/issue_card'
 
-describe MSTeams::MergeCard do
+describe MSTeams::IssueCard do
   before :context do
-    @valid_merge_payload = load_json_fixture :mr
-    @c = MSTeams::MergeCard.new @valid_merge_payload
+    @valid_issue_payload = load_json_fixture :issue
+    @c = MSTeams::IssueCard.new @valid_issue_payload
   end
 
   context 'visibility checks' do
@@ -15,19 +15,20 @@ describe MSTeams::MergeCard do
     end
 
     it 'should not allow to access private attributes' do
-      expect(@c).not_to respond_to('mr_title')
-      expect(@c).not_to respond_to('mr_desc')
+      expect(@c).not_to respond_to('issue_nr')
+      expect(@c).not_to respond_to('issue_title')
+      expect(@c).not_to respond_to('issue_desc')
       expect(@c).not_to respond_to('action')
     end
   end
 
   context 'given a valid payload' do
     it 'should have an author and a project properties' do
-      expect(@c.to_hash['author']).to eq @valid_merge_payload['user']['name']
+      expect(@c.to_hash['author']).to eq @valid_issue_payload['user']['name']
     end
 
     it 'should have the correct title and description' do
-      expect(@c.title).to eq 'Merge-Request Event'
+      expect(@c.title).to eq 'Issue Event'
     end
 
     it 'should have a action struct inside its hash' do
@@ -36,11 +37,11 @@ describe MSTeams::MergeCard do
       expect(action).to be_instance_of Array
       expect(action.size).to eq 1
       expect(action).to respond_to :[]
-      expect(action[0][:name]).to eq 'View Merge-Request'
+      expect(action[0][:name]).to eq 'View Issue'
       expect(action[0][:target]).to be_instance_of Array
       expect(action[0][:target]).to respond_to :[]
       expect(action[0][:target].size).to eq 1
-      expect(action[0][:target][0]).to eq @valid_merge_payload['object_attributes']['url']
+      expect(action[0][:target][0]).to eq @valid_issue_payload['object_attributes']['url']
     end
   end
 

@@ -31,9 +31,7 @@ describe MSTeams::PushCard do
       expect(@pc.description).to eq 'John Smith pushed 4 commits '\
         '([da1560886d4f094c3e6c9ef40349f7d38b5d27d7](http://example.com/mike'\
         '/diaspora/commit/b6568db1bc1dcd7f8b4d5a946b0b91f9dacd7327)) '\
-        'to branch m in [mike/diaspora](http://example.com/mike/diaspora)'
+        'to branch master in [mike/diaspora](http://example.com/mike/diaspora)'
     end
-
   end
-
 end

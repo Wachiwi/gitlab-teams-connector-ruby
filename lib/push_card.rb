@@ -11,7 +11,7 @@ module MSTeams
     private
 
     def parse_payload(payload)
-      @branch = payload['ref'][11]
+      @branch = payload['ref'][11..-1]
       @commits_count = payload['total_commits_count']
       @latest_commit_id = payload['after']
       @latest_commit_url = payload['commits'][0]['url']
