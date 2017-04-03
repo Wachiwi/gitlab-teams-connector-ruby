@@ -28,7 +28,7 @@ describe MSTeams::PipelineCard do
 
     it 'should have the correct title and description' do
       expect(@c.title).to eq 'Pipeline Event'
-      expect(@c.description).to eq 'A Pipeline for branch master in [gitlab-org/gitlab-test](http://192.168.64.1:3005/gitlab-org/gitlab-test) did successfully finish!<br/>The Pipeline took roughly 3min to finish'
+      expect(@c.description).to eq 'A pipeline for branch master in [gitlab-org/gitlab-test](http://192.168.64.1:3005/gitlab-org/gitlab-test) did successfully finish!<br/>The pipeline took roughly 1m 3s to finish'
     end
 
     # Is not actionable so this example is not necessary

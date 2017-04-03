@@ -1,3 +1,4 @@
+require 'chronic_duration'
 require_relative 'card'
 
 module MSTeams
@@ -29,8 +30,8 @@ module MSTeams
     end
 
     def generate_description
-      @description = "A Pipeline for branch #{@pipeline_branch} in [#{@project_name}](#{@project_url}) #{action_phrase}!<br/>"
-      @description += "The Pipeline took roughly #{@pipeline_duration % 60}min to finish" if @action == 'created' or @action == 'success'
+      @description = "A pipeline for branch #{@pipeline_branch} in [#{@project_name}](#{@project_url}) #{action_phrase}!<br/>"
+      @description += "The pipeline took roughly #{ChronicDuration.output(@pipeline_duration, :format => :short)} to finish" if @action == 'created' or @action == 'success'
     end
   end
 end
