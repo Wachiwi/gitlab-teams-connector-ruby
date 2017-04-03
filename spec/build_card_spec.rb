@@ -27,8 +27,8 @@ describe MSTeams::BuildCard do
     end
 
     it 'should have the correct title and description' do
-      expect(@c.title).to eq 'build Event'
-      expect(@c.description).to eq 'A build for branch master in [gitlab-org/gitlab-test](http://192.168.64.1:3005/gitlab-org/gitlab-test) did successfully finish!<br/>The build took roughly 3min to finish'
+      expect(@c.title).to eq 'Build Event'
+      expect(@c.description).to eq 'A build for branch master in [gitlab-org/gitlab-test](http://192.168.64.1:3005/gitlab-org/gitlab-test) did successfully finish!<br/>The build took roughly 3 min to finish.'
     end
   end
 

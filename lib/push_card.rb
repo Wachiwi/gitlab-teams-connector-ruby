@@ -1,3 +1,5 @@
+require_relative 'card'
+
 module MSTeams
 
   class PushCard < Card

@@ -1,3 +1,6 @@
+require 'chronic_duration'
+require_relative 'card'
+
 module MSTeams
 
   class BuildCard < Card
@@ -31,7 +34,7 @@ module MSTeams
 
     def generate_description
       @description = "The build for #{@build_stage}/#{@build_name} for branch #{@build_branch} in #{@project_name} #{action_phrase}!<br/>"
-      @description += "The build took roughly #{@build_duration % 60}min to finish" if @action == 'success' or @action == 'failed'
+      @description += "The build took roughly #{ChronicDuration.output(@build_duration, :format => :short)} min to finish." if @action == 'success' or @action == 'failed'
     end
   end
 end
